@@ -126,5 +126,9 @@ bash: up
 shell_plus: up
 	docker exec -it kuma_web_1 ./manage.py shell_plus
 
+test-humans:
+	docker-compose run web py.test --nomigrations kuma/humans
+
+
 # Those tasks don't have file targets
 .PHONY: test coveragetest intern locust clean locale install compilecss compilejsi18n collectstatic localetest localeextract localecompile localerefresh
