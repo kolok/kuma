@@ -2,12 +2,12 @@ node {
     stage 'git'
     git branch: 'jenkins-pipeline', url: 'https://github.com/mozilla/kuma'
 
-    stage 'Build'
-    sh 'make build'
+    stage 'Build base'
+    sh 'make build-base'
 
-    stage 'Test local'
-    sh 'make test-humans'
-    echo 'TODO: other tests'
+    stage 'Test base'
+    sh 'make compose-test TEST=noext'
+    sh 'make compose-test'
 
     stage 'Deploy k8s-dev'
     echo 'TODO: make deploy-k8s-dev'
